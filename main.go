@@ -1,8 +1,8 @@
 package main
 
 import (
-	"Backend-Project-NDL/db"
-	"Backend-Project-NDL/routes"
+	"Template-golang/db"
+	"Template-golang/routes"
 )
 
 func main() {

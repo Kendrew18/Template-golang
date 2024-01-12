@@ -1,10 +1,11 @@
 package routes
 
 import (
-	controllers "Backend-Project-NDL/controller"
+	"Template-golang/controller/template_controller"
+	"net/http"
+
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
-	"net/http"
 )
 
 func Init() *echo.Echo {
@@ -16,24 +17,10 @@ func Init() *echo.Echo {
 		return c.String(http.StatusOK, "Project-NDL")
 	})
 
-	NDL := e.Group("/NDL")
-	Rekap := e.Group("/Rekap")
-	PO := e.Group("/PO")
+	TMP := e.Group("/TMP")
 
 	//NDL
-	NDL.POST("/read-excel", controllers.ReadEXCEL)
-
-	NDL.POST("/input-ndl", controllers.InputNDL)
-
-	NDL.GET("/NDL", controllers.ReadNDL)
-
-	//Rekap
-	Rekap.GET("/Rekap", controllers.ReadRekap)
-
-	Rekap.PUT("/update-status-rkp", controllers.UpdateStatusRekap)
-
-	//PO-supplier
-	PO.POST("/input-PO-supplier", controllers.InputPOsupplier)
+	TMP.GET("/template", template_controller.Template_Controller)
 
 	return e
 }
